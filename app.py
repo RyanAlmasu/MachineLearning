@@ -20,7 +20,7 @@ with st.sidebar:
     st.title("Ryan Almasu")
     st.title("Welcome to My Project")
     choice = st.radio("Navigation", ["Upload","Profiling","Modelling" , "Predictions"])
-    st.info("This project helps explore your data and create models to be trained as machine learning.")
+    st.info("This project helps explore your data and create models to predict using the best algorithm, be sure thats you using the right labels.")
 
 if choice == "Upload":
     st.title("Upload Dataset")
@@ -38,22 +38,41 @@ if choice == "Profiling":
 if choice == "Modelling":
     st.title("Picking the Label")
     st.info("Better pick the label you want to predict to make it works")
-    chosen_target = st.selectbox('Choose the Target Column', df.columns)
+    chosen_target = st.selectbox('Choose the Labels Column', df.columns)
     if st.button('Run Modelling'):
-        st.info("Wait a minutes okay XD")
+        st.info("Wait a sec okay :D")
+        
+        # Add a progress bar
+        progress_bar = st.progress(0)
+        
+        # Run the modeling steps
         setup(df, target=chosen_target)
         setup_df = pull()
-        st.dataframe(setup_df)
+        
+        # Update progress bar
+        progress_bar.progress(25)
+        
         best_model = compare_models()
         compare_df = pull()
-        st.dataframe(compare_df)
-
+        
+        # Update progress bar
+        progress_bar.progress(50)
+        
         best_model_name = compare_df['Model'].iloc[0]
 
         st.write("Best Model:")
         st.write(best_model_name)
 
         save_model(best_model, 'best_model')
+        
+        # Update progress bar
+        progress_bar.progress(100)
+
+        st.success("Modeling is complete!")
+
+        st.dataframe(setup_df)
+        st.dataframe(compare_df)
+
 
 if choice == "Predictions":
     st.title("Predictions")
@@ -66,11 +85,10 @@ if choice == "Predictions":
                 predictions = predict_model(best_model, data=df)
                 st.write(predictions)
                 predictions.to_csv('predictions.csv', index=False)
-                st.success("Predictions saved to predictions.csv file")
+                st.success("Success")
+                
         else:
             st.warning("Please upload a dataset first.")
     else:
         st.warning("Please run the Modelling step first to generate the best model.")
         
-
-
