@@ -29,18 +29,21 @@ if choice == "Upload":
         df = pd.read_csv(file, index_col=None)
         df.to_csv('dataset.csv', index=None)
         st.dataframe(df)
+        st.info("After finish uploading your data, click on Profilling!")
 
 if choice == "Profiling": 
     st.title("Exploratory Data Analysis")
+    st.info("If your dashboard completely done, click on Modelling!")
     profile_df = df.profile_report()
     st_profile_report(profile_df)
+    
 
 if choice == "Modelling":
     st.title("Picking the Label")
     st.info("Better pick the label you want to predict to make it works")
     chosen_target = st.selectbox('Choose the Labels Column', df.columns)
     if st.button('Run Modelling'):
-        st.info("Wait a sec okay :D")
+        st.info("Wait a sec okay")
         
         # Add a progress bar
         progress_bar = st.progress(0)
@@ -69,6 +72,7 @@ if choice == "Modelling":
         progress_bar.progress(100)
 
         st.success("Modeling is complete!")
+        st.info("If the modelling is done, click on Predictions!")
 
         st.dataframe(setup_df)
         st.dataframe(compare_df)
@@ -92,3 +96,5 @@ if choice == "Predictions":
     else:
         st.warning("Please run the Modelling step first to generate the best model.")
         
+
+
