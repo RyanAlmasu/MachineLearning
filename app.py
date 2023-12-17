@@ -20,7 +20,7 @@ with st.sidebar:
     st.title("Ryan Almasu")
     st.title("Welcome to My Project")
     choice = st.radio("Navigation", ["Upload","Profiling","Modelling" , "Predictions"])
-    st.info("This project helps explore your data and create models to predict using the best algorithm, be sure thats you using the right labels.")
+    st.info("This project helps explore your data and create models to predict using the best algorithm, be sure thats you using the right label.")
 
 if choice == "Upload":
     st.title("Upload Dataset")
