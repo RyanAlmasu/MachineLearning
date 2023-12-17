@@ -40,6 +40,7 @@ if choice == "Modelling":
     st.info("Better pick the label you want to predict to make it works")
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     if st.button('Run Modelling'):
+        st.info("Wait a minutes okay XD")
         setup(df, target=chosen_target)
         setup_df = pull()
         st.dataframe(setup_df)
