@@ -1,8 +1,11 @@
-# Machine Learning Web Application with Streamlit and PyCaret
+# Machine Learning Model Deployment with Streamlit and Pycaret
 
 ## Overview
 
 This repository contains a Python script for building a web application with Streamlit for data exploration, profiling, modeling, and predictions using PyCaret for machine learning tasks. The application allows users to upload datasets, perform exploratory data analysis (EDA), train regression models, and make predictions.
+
+[Link to App](https://ryanmachine.streamlit.app/)
+
 
 ## Setup
 
