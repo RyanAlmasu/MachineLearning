@@ -20,7 +20,7 @@ with st.sidebar:
     st.title("Ryan Almasu")
     st.title("Welcome to My Project")
     choice = st.radio("Navigation", ["Upload","Profiling","Modelling" , "Predictions"])
-    st.info("This project helps explore your data and create models to predict using the best algorithm, be sure thats you using the right label.")
+    st.info("This project helps explore your data and find the best algorithm to be trained as machine learning.")
 
 if choice == "Upload":
     st.title("Upload Dataset")
@@ -29,21 +29,18 @@ if choice == "Upload":
         df = pd.read_csv(file, index_col=None)
         df.to_csv('dataset.csv', index=None)
         st.dataframe(df)
-        st.info("After finish uploading your data, click on Profilling!")
 
 if choice == "Profiling": 
     st.title("Exploratory Data Analysis")
-    st.info("If your dashboard completely done, click on Modelling!")
     profile_df = df.profile_report()
     st_profile_report(profile_df)
-    
 
 if choice == "Modelling":
     st.title("Picking the Label")
     st.info("Better pick the label you want to predict to make it works")
-    chosen_target = st.selectbox('Choose the Labels Column', df.columns)
+    chosen_target = st.selectbox('Choose the Target Column', df.columns)
     if st.button('Run Modelling'):
-        st.info("Wait a sec okay")
+        st.info("Wait a sec okay :D")
         
         # Add a progress bar
         progress_bar = st.progress(0)
@@ -72,7 +69,6 @@ if choice == "Modelling":
         progress_bar.progress(100)
 
         st.success("Modeling is complete!")
-        st.info("If the modelling is done, click on Predictions!")
 
         st.dataframe(setup_df)
         st.dataframe(compare_df)
@@ -95,6 +91,3 @@ if choice == "Predictions":
             st.warning("Please upload a dataset first.")
     else:
         st.warning("Please run the Modelling step first to generate the best model.")
-        
-
-
