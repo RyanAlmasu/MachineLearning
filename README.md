@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# MachineLearning
-=======
 # MachineLearning
 # Predictive Modeling with Streamlit and PyCaret
 ## Overview
@@ -48,4 +45,4 @@ Usage
 Run the Streamlit app by executing the Python script.
 Use the sidebar to navigate through Upload, Profiling, Modelling, and Predictions sections.
 Follow the instructions in each section for dataset upload, exploratory data analysis, modeling, and predictions.
->>>>>>> 31f7cc9 (Update)
+
